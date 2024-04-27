@@ -23,12 +23,11 @@ raiz.iconbitmap("imagenes/calculadora.ico")#ponerle un icono a la aplicacion
 
 
 frame = Frame() #para crear un frame llamamos a su clase 
-frame.config(width="400",height="500") #para ponerle un tamaño a la ventana hacemos lo siguiente , SOLO al frame
+frame.config(width="400",height="600") #para ponerle un tamaño a la ventana hacemos lo siguiente , SOLO al frame
 
 frame.pack() #tenemos que empaquetar el frame dentro de la raiz por lo cual utilizamos el siguiente metodo 
 frame.config(bg="grey") #para cambiar el color de fondo en este caso del frame 
-frame.config(bd=10)
-frame.config(relief=SUNKEN)
+
 
 # si ponemos algo fuera de este metodo no va a funcionar
 raiz.mainloop() #y ponemos este metodo para que se ejecute
