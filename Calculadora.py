@@ -1,67 +1,70 @@
-from tkinter import *#libreria para la interfaz grafica
+from tkinter import *
 
 
-
-#funciones 
-
-#funcion para validar que solo se puedan ingresar numeros
-def validarNumero(entrada): 
+#funciones para poner atributos por defecto
+def ButtonAtributos(contenedor,texto,x,y):#atributos de button 
     
-    return entrada.isdigit() or entrada == "" #con el metodo isidigit devuelve un true si es un digito y un false si no 
- 
+    nombre = Button(contenedor,text=texto,height=8,width=10)
+    nombre.grid(row=x,column=y , sticky="nsew")
+
+    return nombre
+
+def LabelAtributos(contenedor,texto,x,y):
+    
+    label = Label(contenedor,textvariable=texto,justify="right",height=3)
+    label.config(font=("ARIAL",15))#tamaño de fuente recibe como parametros el nombre de la fuente y el tamaño 
+    label.grid(row=x,column=y)
+    
+
+    
+    return label
 
 
-'''la estructura de tkinter viene de la siguiente forma
+raiz = Tk()#raiz del proyecto
+raiz.title("Calculadora")
+raiz.resizable(False,False)
 
--raiz
--frame
--wigets
+raiz.iconbitmap("imagenes/calculadora.ico")
 
-
-''' 
-
-#declaramos una variable con la clase tkinter
-
-raiz = Tk() #en este caso como vamos a crear la raiz la llamamos asi 
-
-raiz.title("Calculadora") #Para ponerle un titulo a nuestra venta utilizamos el metodo title 
-
-raiz.resizable(False,False)#este metodo sirve para que podamos agrandar o no la ventana con un true o un false 
+frame = Frame(raiz,width=40)#frame del proyecto
+frame.pack()#empaquetamos la calculadora
 
 
-raiz.iconbitmap("imagenes/calculadora.ico")#ponerle un icono a la aplicacion
+#variables que van a  enviar una notificacion cuando sean modificadas
+resultado = StringVar()
+resultado.set("0") #Que el texto por defecto sea 0 por eso mandamos 0 con set
+operacion = StringVar()
+operacion.set("0")
 
+#label que van a tener nuestra aplicacion 
 
-
-frame = Frame(raiz) #para crear un frame llamamos a su clase 
-frame.config(width="400",height="600") #para ponerle un tamaño a la ventana hacemos lo siguiente , SOLO al frame
-frame.pack() #tenemos que empaquetar el frame dentro de la raiz por lo cual utilizamos el siguiente metodo 
-frame.config(bg="grey") #para cambiar el color de fondo en este caso del frame 
-
-
-
-
-#input de nuestra calculadora 
-
-
-
-vmcd = (raiz.register(validarNumero),"%P")#el register es para registrar una validacion en este caso lo vamos hacer con la funcion ya antes definida
-#El %P es el texto que esta dentro del entry este se pasa como parametro a la funcion de validacion para que acceda al texto del entry
-entrada = Entry(raiz,font=("Arial",40),validate="key",validatecommand=vmcd)#validate= "key" es para que se le diga que se tiene que realizar la validacion cada vez que se ingresa algo por teclado 
-#el validatecommand es una funcion que se llamara cada vez que se tenga que realizar una validacion si devulve true deja realizar la accion si no  impide la accion 
-entrada.place(x="0" , y =  "0")
-entrada.config(bg="gray")
+LabelOperacion = LabelAtributos(frame,operacion,0,3)
+LabelResultado = LabelAtributos(frame,resultado,1,3)
 
 
 
+#los buttons que van a tener nuestra aplicacion
+button_1 = ButtonAtributos(frame,"1",2,0)
+button_2 = ButtonAtributos(frame,"2",2,1)
+button_3 = ButtonAtributos(frame,"3",2,2)
+button_4 = ButtonAtributos(frame,"4",3,0)
+button_5 = ButtonAtributos(frame,"5",3,1)
+button_6 = ButtonAtributos(frame,"6",3,2)
+button_7 = ButtonAtributos(frame,"7",4,0)
+button_8 = ButtonAtributos(frame,"8",4,1)
+button_9 = ButtonAtributos(frame,"9",4,2)
+button_0 = ButtonAtributos(frame,"0",5,0)
+button_multiplicar = ButtonAtributos(frame,"X",2,3)
+button_Sumar = ButtonAtributos(frame,"+",5,1)
+button_Restar = ButtonAtributos(frame,"-",5,2)
+button_Dividir = ButtonAtributos(frame,"/",3,3)
+button_Porcentaje = ButtonAtributos(frame,"%",4,3)
+button_Resultado = ButtonAtributos(frame,"=",5,3)
 
 
 
 
-
-# si ponemos algo fuera de este metodo no va a funcionar
-raiz.mainloop() #y ponemos este metodo para que se ejecute
-#el metodo mainloop  nos sirve ya que para que se nos muestre la ventana tenemos que hacer como un bucle de manera infinita y para eso esta este metodo 
+raiz.mainloop()#un ciclo para que se repita la ventana
 
 
 
