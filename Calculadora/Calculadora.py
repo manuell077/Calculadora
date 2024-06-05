@@ -17,7 +17,28 @@ def CaracteresPantalla(seleccion):
     
 
 
-
+def Suma():
+    
+    global operador
+    global valor1
+    valor1 = int(resultado.get())
+    operacion.set(resultado.get() + "+")
+    resultado.set("")
+    operador = "suma"
+    
+def igual():
+    
+    
+    
+    if operador == "suma":
+        
+       valor2 = int(resultado.get())
+       operacion.set(operacion.get()+ resultado.get())
+       resultado.set("")
+       suma = valor1 + valor2
+       resultado.set(suma)
+        
+        
 
 
 raiz = Tk()#raiz del proyecto
@@ -58,7 +79,7 @@ Boton_8 = Button(frame,text="8",width=10,height=3,command=lambda:CaracteresPanta
 Boton_8.grid(row=2,column=1,sticky="NSEW")
 Boton_9 = Button(frame,text="9",width=10,height=3,command=lambda:CaracteresPantalla("9"))
 Boton_9.grid(row=2,column=2,sticky="NSEW")
-Boton_10 = Button(frame,text="+",width=10,height=3,command=lambda:CaracteresPantalla("+"))
+Boton_10 = Button(frame,text="+",width=10,height=3,command=lambda:Suma())
 Boton_10.grid(row=2,column=3,sticky="NSEW")
 Boton_4 = Button(frame,text="4",width=10,height=3,command=lambda:CaracteresPantalla("4"))
 Boton_4.grid(row=3,column=0,sticky="NSEW")
@@ -82,7 +103,7 @@ Boton_0 = Button(frame,text="0",width=10,height=3,command=lambda:CaracteresPanta
 Boton_0.grid(row=5,column=1,sticky="NSEW")
 Boton_Diviendo = Button(frame,text="/",width=10,height=3,command=lambda:CaracteresPantalla("/"))
 Boton_Diviendo.grid(row=5,column=2,sticky="NSEW")
-Boton_Resultado = Button(frame,text="=",width=10,height=3,command=lambda:CaracteresPantalla("="))
+Boton_Resultado = Button(frame,text="=",width=10,height=3,command=lambda:igual())
 Boton_Resultado.grid(row=5 ,column=3,sticky="NSEW")
 
 
