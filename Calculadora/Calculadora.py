@@ -1,42 +1,49 @@
 from tkinter import *
 
 
+
 #funcion para mandar numeros a la pantalla 
 
 
 def CaracteresPantalla(seleccion):
     
-    if resultado.get() == "0":
+    if resultado.get() == "0":#si el label resultado es igual a 0 entonces que borre ese 0 y quede en blanco y escriba el valor que ingreso 
         
         resultado.set("")
         resultado.set(seleccion)
-        
-    else:
+          
+
+    else:#si ya no es cero que se siga concatenando
         
         resultado.set(resultado.get()+seleccion)
     
 
-
+#funcion para sumar numeros
 def Suma():
     
     global operador
     global valor1
-    valor1 = int(resultado.get())
-    operacion.set(resultado.get() + "+")
+    valor1 = int(resultado.get())#obtenemos el valor 1 
+    operacion.set(resultado.get() + "+")#el valor obtenido de resultado cuando le dio al boton "+" se guarde y se mand a operacion
     resultado.set("")
-    operador = "suma"
+    operador = "suma"#si es una suma decimos que operador  es una suma
     
 def igual():
     
+    global suma
+     
     
-    
-    if operador == "suma":
+    if operador == "suma":#le decimos que si operador es de tipo suma entonces que realice las operaciones
         
        valor2 = int(resultado.get())
-       operacion.set(operacion.get()+ resultado.get())
+       operacion.set(operacion.get()+ resultado.get())#que el valor de resultado se concatene en operacion
        resultado.set("")
-       suma = valor1 + valor2
-       resultado.set(suma)
+       suma = valor1 + valor2#operacion de para sumar los dos valores obtenidos
+       resultado.set(suma)#enviar  el resultado de la operacion al label resultado 
+       
+       
+         
+       
         
         
 
